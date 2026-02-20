@@ -1,0 +1,80 @@
+title                   = OPLS Lysozyme NVT equilibration 
+
+integrator              = md-vv        
+nsteps                  = 80000000     
+dt                      = 0.001     
+
+nstxout                 = 10000       
+nstvout                 = 10000       
+nstfout                 = 10000
+nstenergy               = 10000       
+nstlog                  = 10000       
+
+continuation            = yes 
+constraint_algorithm    = lincs     
+constraints             = h-bonds   
+lincs_iter              = 1         
+lincs_order             = 4         
+
+cutoff-scheme           = Verlet    
+vdwtype                 = cutoff
+vdw-modifier            = force-switch
+rlist                   = 1.2
+ns_type                 = grid      
+nstlist                 = 10        
+rcoulomb                = 1.2       
+rvdw                    = 1.2       
+rvdw-switch             = 1.0
+DispCorr                = no
+
+coulombtype             = PME       
+pme_order               = 4         
+fourierspacing          = 0.1      
+
+tcoupl                  = nose-hoover          
+tc-grps                 = System   
+nsttcouple              = 1
+nh-chain-length         = 1
+tau_t                   = 0.1          
+ref_t                   = 298         
+
+pcoupl                  = Parrinello-rahman        
+pcoupltype              = isotropic
+
+tau_p                   = 10
+compressibility         = 4.5e-5
+ref-p                   = 1
+refcoord-scaling        = all
+
+
+pbc                     = xyz       
+periodic-molecules = yes
+
+gen_vel                 = no       
+gen_temp                = 298       
+gen_seed                = -1        
+
+
+comm-mode = linear 
+
+pull = yes
+pull_nstxout  = 500
+pull_nstfout  = 500
+pull_ngroups  = 2
+pull_ncoords  = 1
+pull_group1_name = Membrane
+pull_group2_name = NH3 ; Change to NH4 when applicable
+
+pull-group1-pbcatom     = -1
+pull-pbc-ref-prev-step-com      = yes
+
+
+pull_coord1_type = umbrella 
+pull_coord1_geometry = direction
+pull_coord1_groups   = 1 2
+pull_coord1_dim      = N N Y
+pull_coord1_start    = no
+pull_coord1_init     = 0.0
+pull_coord1_vec      = 0 0 1
+pull_coord1_rate     = 0.0
+pull_coord1_k        = 200

@@ -1,0 +1,20 @@
+integrator  = steep       
+emtol       = 10.0        
+emstep      = 0.01        
+nsteps      = 50000       
+
+nstlist         = 1         
+cutoff-scheme   = Verlet    
+vdwtype         = cutoff
+vdw-modifier    = force-switch
+rlist           = 1.2 
+ns_type         = grid      
+rcoulomb        = 1.2       
+rvdw            = 1.2       
+rvdw-switch     = 1.0
+pbc             = xyz       
+coulombtype             = PME      
+pme_order               = 4        
+fourierspacing          = 0.1      
+DispCorr        = no
+comm-mode = Linear

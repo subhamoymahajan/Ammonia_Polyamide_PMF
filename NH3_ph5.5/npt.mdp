@@ -1,0 +1,55 @@
+integrator              = md-vv        
+nsteps                  = 20000000     
+dt                      = 0.001     
+
+nstxout                 = 100000       
+nstvout                 = 100000       
+nstfout                 = 100000
+nstenergy               = 100000       
+nstlog                  = 100000       
+
+continuation            = no        
+constraint_algorithm    = lincs     
+constraints             = h-bonds   
+lincs_iter              = 1         
+lincs_order             = 4         
+
+cutoff-scheme           = Verlet    
+vdwtype                 = cutoff
+vdw-modifier            = force-switch
+rlist                   = 1.2
+ns_type                 = grid      
+nstlist                 = 10        
+rcoulomb                = 1.2       
+rvdw                    = 1.2       
+rvdw-switch             = 1.0
+DispCorr                = no
+
+coulombtype             = PME       
+pme_order               = 4         
+fourierspacing          = 0.1      
+
+tcoupl                  = v-rescale            
+tc-grps                 = Membrane Solv_Solu   
+tau_t                   = 0.1  0.1        
+ref_t                   = 298  298       
+
+pcoupl                  = berendsen 
+pcoupltype              = isotropic
+
+tau_p                   = 10
+compressibility         = 4.5e-5
+ref-p                   = 1
+refcoord-scaling        = all
+
+
+pbc                     = xyz       
+periodic-molecules = yes
+
+gen_vel                 = no       
+gen_temp                = 298       
+gen_seed                = -1        
+
+
+comm-mode = linear 
+
